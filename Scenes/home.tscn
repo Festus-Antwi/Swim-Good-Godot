@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://dwca2qfkxooui"]
+
+[ext_resource type="Script" uid="uid://4o37n20fpb75" path="res://Scripts/home.gd" id="1_cykap"]
+[ext_resource type="PackedScene" uid="uid://bj2plsdi0fbyg" path="res://Scenes/sand.tscn" id="1_fhpuh"]
+[ext_resource type="PackedScene" uid="uid://u18i1x2t4bfv" path="res://Scenes/beach_stuff.tscn" id="2_vkfas"]
+[ext_resource type="PackedScene" uid="uid://w5kq1xl8ei2x" path="res://Scenes/underwatter_stuff.tscn" id="3_q1yq7"]
+[ext_resource type="Material" uid="uid://ds8yapk032gyx" path="res://Shaders & Materials/waterMaterial.tres" id="4_cykap"]
+[ext_resource type="FontFile" uid="uid://cnrht24jeb3qx" path="res://Assets/Fonts/SoftyFluffy-Regular.ttf" id="4_vkfas"]
+[ext_resource type="Texture2D" uid="uid://dubbd6faoadvy" path="res://Assets/Graphics/Buttons/play.png" id="5_nw1ns"]
+[ext_resource type="Texture2D" uid="uid://dhbb8hm6f15fw" path="res://Assets/Graphics/Buttons/play_pressed.png" id="6_8riyq"]
+[ext_resource type="PackedScene" uid="uid://cjtbx4htndfy8" path="res://Scenes/water_stuff.tscn" id="8_q1yq7"]
+
+[node name="Home" type="Node2D"]
+script = ExtResource("1_cykap")
+
+[node name="BG" type="ColorRect" parent="."]
+offset_left = -21.0
+offset_right = 1134.0
+offset_bottom = 1346.0
+color = Color(0.380615, 0.328125, 1, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Start" type="TextureButton" parent="CanvasLayer"]
+offset_left = 368.0
+offset_top = 1473.0
+offset_right = 719.0
+offset_bottom = 1824.0
+texture_normal = ExtResource("5_nw1ns")
+texture_pressed = ExtResource("6_8riyq")
+
+[node name="HighScore" type="Label" parent="CanvasLayer"]
+offset_left = 228.0
+offset_top = 628.0
+offset_right = 943.0
+offset_bottom = 866.0
+theme_override_fonts/font = ExtResource("4_vkfas")
+theme_override_font_sizes/font_size = 80
+text = "HighScore: "
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+offset_left = 65.0
+offset_top = 320.0
+offset_right = 1033.0
+offset_bottom = 696.0
+theme_override_colors/font_color = Color(1, 0.641113, 0.179688, 1)
+theme_override_fonts/font = ExtResource("4_vkfas")
+theme_override_font_sizes/font_size = 156
+text = "Swim Good"
+
+[node name="waterEffect" type="ColorRect" parent="CanvasLayer"]
+material = ExtResource("4_cykap")
+offset_left = -79.0
+offset_right = 1269.0
+offset_bottom = 1348.0
+
+[node name="Sand" parent="." instance=ExtResource("1_fhpuh")]
+
+[node name="Beach stuff" parent="." instance=ExtResource("2_vkfas")]
+position = Vector2(-21, 0)
+
+[node name="underwatter stuff" parent="." instance=ExtResource("3_q1yq7")]
+
+[node name="water stuff" parent="." instance=ExtResource("8_q1yq7")]
+position = Vector2(-36, -10)
+
+[connection signal="pressed" from="CanvasLayer/Start" to="." method="_on_start_pressed"]

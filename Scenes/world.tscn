@@ -1,0 +1,402 @@
+[gd_scene load_steps=35 format=3 uid="uid://d1q1tlawydtk3"]
+
+[ext_resource type="Script" uid="uid://b2fhj5si5fd6d" path="res://Scripts/world.gd" id="1_o06y3"]
+[ext_resource type="Texture2D" uid="uid://bhpfumt161ept" path="res://Assets/Graphics/circle.png" id="2_5a7ea"]
+[ext_resource type="Script" uid="uid://cvyf83oikxvfj" path="res://Scripts/fps.gd" id="2_ikia7"]
+[ext_resource type="FontFile" uid="uid://cnrht24jeb3qx" path="res://Assets/Fonts/SoftyFluffy-Regular.ttf" id="3_0pcbe"]
+[ext_resource type="Texture2D" uid="uid://dubbd6faoadvy" path="res://Assets/Graphics/Buttons/play.png" id="3_c5t2i"]
+[ext_resource type="Texture2D" uid="uid://b1ru5itdwt6ny" path="res://Assets/Graphics/Buttons/switch.png" id="3_kn0ld"]
+[ext_resource type="Texture2D" uid="uid://dsd38nyyev4k0" path="res://Assets/Graphics/worm.png" id="3_t2t4p"]
+[ext_resource type="Material" uid="uid://ds8yapk032gyx" path="res://Shaders & Materials/waterMaterial.tres" id="6_5ukr8"]
+[ext_resource type="Texture2D" uid="uid://bgg0d5le08vq2" path="res://Assets/Graphics/centre.png" id="6_k7acu"]
+[ext_resource type="Texture2D" uid="uid://busq7llgoyq1v" path="res://Assets/Graphics/Buttons/switch pressed.png" id="6_pyn1s"]
+[ext_resource type="Texture2D" uid="uid://dhbb8hm6f15fw" path="res://Assets/Graphics/Buttons/play_pressed.png" id="8_no8kt"]
+[ext_resource type="Texture2D" uid="uid://3i6cfs38njfi" path="res://Assets/Graphics/Buttons/restart_1.png" id="9_xbk3s"]
+[ext_resource type="Texture2D" uid="uid://bpuemo1p3nvxa" path="res://Assets/Graphics/UnderWater Objects/Coral 2.png" id="10_7yui6"]
+[ext_resource type="Texture2D" uid="uid://dgxjvwx12by1l" path="res://Assets/Graphics/Buttons/restart_pressed.png" id="10_i4fjy"]
+[ext_resource type="PackedScene" uid="uid://bj2plsdi0fbyg" path="res://Scenes/sand.tscn" id="12_xbk3s"]
+[ext_resource type="PackedScene" uid="uid://u18i1x2t4bfv" path="res://Scenes/beach_stuff.tscn" id="13_i4fjy"]
+[ext_resource type="PackedScene" uid="uid://w5kq1xl8ei2x" path="res://Scenes/underwatter_stuff.tscn" id="14_pt3ps"]
+[ext_resource type="PackedScene" uid="uid://cjtbx4htndfy8" path="res://Scenes/water_stuff.tscn" id="15_1cojt"]
+[ext_resource type="Script" uid="uid://bfygb02adtnk1" path="res://Scripts/worm_spawner.gd" id="16_hgpy0"]
+[ext_resource type="Texture2D" uid="uid://bxwf3uu4ri1hr" path="res://Assets/Graphics/white.png" id="21_no8kt"]
+[ext_resource type="AudioStream" uid="uid://cksqxx02thrck" path="res://Assets/Sounds/spike.ogg" id="22_no8kt"]
+[ext_resource type="Texture2D" uid="uid://cjhfx8vyaffi1" path="res://Assets/Graphics/fish.png" id="22_pyn1s"]
+
+[sub_resource type="Curve" id="Curve_no8kt"]
+_data = [Vector2(0.0167785, 0.193042), 0.0, 0.0, 0, 0, Vector2(0.993289, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_xbk3s"]
+colors = PackedColorArray(0.992157, 0.168627, 0.168627, 0.662745, 1, 1, 1, 0.121569)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ukr8"]
+size = Vector2(57, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikia7"]
+size = Vector2(1297, 116)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7yui6"]
+size = Vector2(182, 1346)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5t2i"]
+size = Vector2(143, 1343)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0ngr"]
+size = Vector2(1361, 83)
+
+[sub_resource type="Animation" id="Animation_yq1aw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerRotator/Fish/blood:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Spike:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1cojt"]
+resource_name = "fade"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_pyn1s"]
+resource_name = "turn"
+length = 0.3
+
+[sub_resource type="Animation" id="Animation_no8kt"]
+resource_name = "spiked"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerRotator/Fish/blood:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spike:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pyn1s"]
+_data = {
+&"RESET": SubResource("Animation_yq1aw"),
+&"fade": SubResource("Animation_1cojt"),
+&"spiked": SubResource("Animation_no8kt"),
+&"turn": SubResource("Animation_pyn1s")
+}
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_o06y3")
+rotate_speed = 1.3
+
+[node name="BG" type="ColorRect" parent="."]
+offset_left = -66.0
+offset_right = 1147.0
+offset_bottom = 1346.0
+color = Color(0.380392, 0.329412, 1, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="fps" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 459.0
+offset_top = 57.0
+offset_right = 678.0
+offset_bottom = 148.0
+theme_override_colors/font_color = Color(1, 0.706604, 0.0117188, 1)
+theme_override_font_sizes/font_size = 66
+text = "FPS:"
+script = ExtResource("2_ikia7")
+
+[node name="level_lbl" type="Label" parent="CanvasLayer"]
+offset_left = 58.0
+offset_top = 57.0
+offset_right = 341.0
+offset_bottom = 199.0
+theme_override_fonts/font = ExtResource("3_0pcbe")
+theme_override_font_sizes/font_size = 66
+text = "Level:1"
+
+[node name="worms_lbl" type="Label" parent="CanvasLayer"]
+offset_left = 882.0
+offset_top = 62.0
+offset_right = 1292.0
+offset_bottom = 204.0
+theme_override_fonts/font = ExtResource("3_0pcbe")
+theme_override_font_sizes/font_size = 66
+text = ":0"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/worms_lbl"]
+position = Vector2(-19, 78)
+texture = ExtResource("3_t2t4p")
+
+[node name="RestartBttn" type="TextureButton" parent="CanvasLayer"]
+visible = false
+offset_left = 368.0
+offset_top = 1473.0
+offset_right = 729.0
+offset_bottom = 1834.0
+pivot_offset = Vector2(183, 185)
+texture_normal = ExtResource("9_xbk3s")
+texture_pressed = ExtResource("10_i4fjy")
+
+[node name="SwitchBttn" type="TextureButton" parent="CanvasLayer"]
+visible = false
+offset_left = 368.0
+offset_top = 1473.0
+offset_right = 728.0
+offset_bottom = 1834.0
+pivot_offset = Vector2(187, 182)
+texture_normal = ExtResource("3_kn0ld")
+texture_pressed = ExtResource("6_pyn1s")
+
+[node name="PlayBttn" type="TextureButton" parent="CanvasLayer"]
+offset_left = 368.0
+offset_top = 1473.0
+offset_right = 729.0
+offset_bottom = 1834.0
+pivot_offset = Vector2(176, 182)
+texture_normal = ExtResource("3_c5t2i")
+texture_pressed = ExtResource("8_no8kt")
+
+[node name="Dim" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_left = -66.0
+offset_right = 1167.0
+offset_bottom = 1316.0
+color = Color(0.380392, 0.329412, 1, 1)
+
+[node name="GameOverLbl" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 49.0
+offset_top = 327.0
+offset_right = 1039.0
+offset_bottom = 669.0
+pivot_offset = Vector2(505, 168)
+theme_override_colors/font_color = Color(0.984375, 0.62689, 0.311462, 1)
+theme_override_fonts/font = ExtResource("3_0pcbe")
+theme_override_font_sizes/font_size = 160
+text = "Game Over"
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 363.0
+offset_top = 640.0
+offset_right = 788.0
+offset_bottom = 791.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_0pcbe")
+theme_override_font_sizes/font_size = 70
+text = "Score: "
+
+[node name="HighScore" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 273.0
+offset_top = 788.0
+offset_right = 844.0
+offset_bottom = 939.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_0pcbe")
+theme_override_font_sizes/font_size = 70
+text = "HighScore: "
+
+[node name="fade" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_left = -39.0
+offset_right = 1127.0
+offset_bottom = 1347.0
+
+[node name="WaterEffect" type="ColorRect" parent="CanvasLayer"]
+material = ExtResource("6_5ukr8")
+offset_left = -86.0
+offset_right = 1170.0
+offset_bottom = 1346.0
+
+[node name="Urchins" type="Node2D" parent="."]
+position = Vector2(540, 730)
+
+[node name="Sand" parent="." instance=ExtResource("12_xbk3s")]
+
+[node name="Beach stuff" parent="." instance=ExtResource("13_i4fjy")]
+
+[node name="underwatter stuff" parent="." instance=ExtResource("14_pt3ps")]
+
+[node name="water stuff" parent="." instance=ExtResource("15_1cojt")]
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(540, 730)
+
+[node name="Circle" type="Sprite2D" parent="."]
+modulate = Color(0.636719, 0.684967, 1, 1)
+position = Vector2(540, 703)
+texture = ExtResource("2_5a7ea")
+
+[node name="Centre" type="Sprite2D" parent="."]
+position = Vector2(540, 703)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_k7acu")
+
+[node name="coral" type="Sprite2D" parent="Centre"]
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(-9, -25)
+scale = Vector2(4.17647, 4.17647)
+texture = ExtResource("10_7yui6")
+
+[node name="WormSpawner" type="Node2D" parent="."]
+script = ExtResource("16_hgpy0")
+radius = 440
+
+[node name="origin" type="Marker2D" parent="WormSpawner"]
+position = Vector2(540, 703)
+
+[node name="PlayerRotator" type="Node2D" parent="."]
+position = Vector2(540, 703)
+
+[node name="Fish" type="Area2D" parent="PlayerRotator" groups=["Player"]]
+position = Vector2(0, -440)
+
+[node name="blood" type="CPUParticles2D" parent="PlayerRotator/Fish"]
+emitting = false
+amount = 50
+texture = ExtResource("21_no8kt")
+lifetime = 2.0
+one_shot = true
+speed_scale = 1.4
+explosiveness = 0.29
+randomness = 0.04
+emission_shape = 1
+emission_sphere_radius = 13.8
+direction = Vector2(1, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 19.75
+initial_velocity_max = 88.5
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_no8kt")
+color = Color(0.996094, 0.186768, 0.186768, 1)
+color_ramp = SubResource("Gradient_xbk3s")
+
+[node name="FishSprite" type="Sprite2D" parent="PlayerRotator/Fish"]
+modulate = Color(1, 0.582031, 0.582031, 1)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("22_pyn1s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerRotator/Fish"]
+position = Vector2(9.5, -0.5)
+shape = SubResource("RectangleShape2D_5ukr8")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="Boundary" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(530.5, -48)
+shape = SubResource("RectangleShape2D_ikia7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(-102, 663)
+shape = SubResource("RectangleShape2D_7yui6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(1156.5, 661.5)
+shape = SubResource("RectangleShape2D_c5t2i")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(507.5, 1395.5)
+shape = SubResource("RectangleShape2D_e0ngr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pyn1s")
+}
+
+[node name="Spike" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_no8kt")
+volume_db = -10.0
+
+[connection signal="pressed" from="CanvasLayer/RestartBttn" to="." method="reset_game"]
+[connection signal="pressed" from="CanvasLayer/SwitchBttn" to="." method="_on_switch_bttn_pressed"]
+[connection signal="pressed" from="CanvasLayer/PlayBttn" to="." method="_on_play_pressed"]
+[connection signal="body_entered" from="PlayerRotator/Fish" to="." method="_on_fish_body_entered"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="body_entered" from="Boundary" to="." method="_on_boundary_body_entered"]

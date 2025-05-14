@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnycu3uf1iynd"]
+
+[ext_resource type="Texture2D" uid="uid://c26stxvc7qkow" path="res://Assets/Graphics/UnderWater Objects/Sea Urchin.png" id="1_t3g3u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ip3uh"]
+radius = 14.0357
+
+[node name="urchin" type="RigidBody2D" groups=["Urchins"]]
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_t3g3u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ip3uh")

@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdwaa4n1pgcar"]
+
+[ext_resource type="Texture2D" uid="uid://dsd38nyyev4k0" path="res://Assets/Graphics/worm.png" id="1_fwh4a"]
+[ext_resource type="Script" uid="uid://biwg5h68o6bru" path="res://Scripts/worrm.gd" id="1_l6kdw"]
+[ext_resource type="AudioStream" uid="uid://da5mdb5pvm5bw" path="res://Assets/Sounds/suck.ogg" id="3_jexm2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6kdw"]
+size = Vector2(28, 13)
+
+[sub_resource type="Animation" id="Animation_ippe5"]
+resource_name = "pickup"
+length = 0.17
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Suck:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kfw47"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Suck:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6gxle"]
+_data = {
+&"RESET": SubResource("Animation_kfw47"),
+&"pickup": SubResource("Animation_ippe5")
+}
+
+[node name="Worrm" type="Area2D" groups=["Worms"]]
+script = ExtResource("1_l6kdw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.06989
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_fwh4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -1.5)
+shape = SubResource("RectangleShape2D_l6kdw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6gxle")
+}
+
+[node name="Suck" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jexm2")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

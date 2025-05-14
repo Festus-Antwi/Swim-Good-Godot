@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjtbx4htndfy8"]
+
+[ext_resource type="Texture2D" uid="uid://cnubf631h8xq3" path="res://Assets/Graphics/UnderWater Objects/Coral.png" id="1_qdspr"]
+[ext_resource type="Texture2D" uid="uid://xa56hp32tvip" path="res://Assets/Graphics/UnderWater Objects/Riff.png" id="2_f4347"]
+[ext_resource type="Texture2D" uid="uid://b8vtn1us1hr7c" path="res://Assets/Graphics/UnderWater Objects/Fish Bones.png" id="3_6ux1o"]
+[ext_resource type="Texture2D" uid="uid://dqojv7q7lo0bk" path="res://Assets/Graphics/UnderWater Objects/Mermaid House.png" id="4_ycc5u"]
+[ext_resource type="Texture2D" uid="uid://cqlngwa5ffid7" path="res://Assets/Graphics/UnderWater Objects/Ship.png" id="5_i5ajs"]
+
+[node name="water stuff" type="Node2D"]
+
+[node name="Beige-violetCoral1Shadow3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(1009, 1236)
+scale = Vector2(2.16129, 2.16129)
+texture = ExtResource("1_qdspr")
+
+[node name="Beige-violetCoral1Shadow4" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(194, 929)
+scale = Vector2(2.16129, 2.16129)
+texture = ExtResource("1_qdspr")
+
+[node name="Riff2Shadow1" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(974, 131)
+scale = Vector2(2.54762, 2.54762)
+texture = ExtResource("2_f4347")
+
+[node name="Riff2Shadow2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(72, 1217)
+rotation = 0.227055
+scale = Vector2(1.80952, 1.80952)
+texture = ExtResource("2_f4347")
+
+[node name="MonsterFishBonesShadow1" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.313726)
+position = Vector2(149, 301)
+rotation = 0.519225
+scale = Vector2(1.92678, 1.92678)
+texture = ExtResource("3_6ux1o")
+
+[node name="MonsterFishBonesShadow2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.313726)
+position = Vector2(581, 1256)
+rotation = -0.454208
+scale = Vector2(1.92678, 1.92678)
+texture = ExtResource("3_6ux1o")
+
+[node name="MermaidHouse" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.313726)
+position = Vector2(1044, 687)
+scale = Vector2(2.48101, 2.48101)
+texture = ExtResource("4_ycc5u")
+
+[node name="Ship" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.313726)
+position = Vector2(34.0001, 730)
+rotation = -1.07375
+scale = Vector2(4.81081, 4.81081)
+texture = ExtResource("5_i5ajs")

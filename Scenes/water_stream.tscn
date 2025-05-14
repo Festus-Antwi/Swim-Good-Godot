@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj6peovjaftis"]
+
+[ext_resource type="AudioStream" uid="uid://bksf7u5ciia6p" path="res://Assets/Sounds/water.ogg" id="1_merou"]
+
+[node name="WaterStream" type="AudioStreamPlayer"]
+stream = ExtResource("1_merou")
+volume_db = -35.0
+autoplay = true
