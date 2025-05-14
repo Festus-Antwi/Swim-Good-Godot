@@ -97,6 +97,7 @@ func _on_play_pressed() -> void:
 	rotate_direction = 1 #start rotating player
 	play_bttn.visible = false
 	switch_bttn.visible = true
+	switch_bttn.disabled = false
 	collision_shape_2d.set_deferred("disabled", false) #turn on collision
 	
 
@@ -141,7 +142,7 @@ func _on_fish_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Urchins"):
 		print("you died")
 		GameManager.worms = 0
-		switch_bttn.visible = false
+		switch_bttn.disabled = true
 		GameManager.game_over = true
 		save_highest_points()
 		animation_player.play("spiked")

@@ -11,9 +11,11 @@ config_version=5
 [application]
 
 config/name="Swim Good"
+config/version="1.0"
 run/main_scene="uid://dwca2qfkxooui"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/image="uid://0wed2psvfdak"
+config/icon="uid://0wed2psvfdak"
 
 [autoload]
 
@@ -25,6 +27,9 @@ WaterStream="*res://Scenes/water_stream.tscn"
 
 window/size/viewport_width=1080
 window/size/viewport_height=1920
+window/size/always_on_top=true
+window/size/window_width_override=540
+window/size/window_height_override=960
 window/stretch/mode="canvas_items"
 
 [rendering]
