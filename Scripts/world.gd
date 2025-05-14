@@ -38,10 +38,10 @@ func _process(delta: float) -> void:
 	if GameManager.game_running == true and GameManager.game_over == false:
 		rotate_player(delta)
 		
-	worms_lbl.text = ":" + str(GameManager.worms)
+	worms_lbl.text = ":" + str(GameManager.worms_collected)
 	level_lbl.text = "Level:" + str(GameManager.level_number)
-	 
-	check_worms_collected()
+
+	check_level()
 	
 
 
@@ -111,10 +111,8 @@ func _on_switch_bttn_pressed() -> void:
 
 func  level_up():
 	print("leveled up")
+	GameManager.leveled_up = false
 	switch_bttn.visible = false
-	restart_bttn.visible = false
-	GameManager.level_number += 1
-	GameManager.reset_worms_amount()
 	collision_shape_2d.set_deferred("disabled", true)
 	player_rotator.rotation = 0
 	fish_sprite.scale.x = fish_scale_x
@@ -125,10 +123,12 @@ func  level_up():
 	play_bttn.visible = true
 	
 	
-func check_worms_collected():
-	if GameManager.worms >= 30 and GameManager.game_running == true:
+func check_level():
+	if GameManager.leveled_up == true:
 		GameManager.game_running = false
 		level_up()
+		
+
 
 func increase_difficulty():
 	if movement_force <= 35000:
@@ -140,6 +140,8 @@ func increase_difficulty():
 func _on_fish_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Urchins"):
 		print("you died")
+		GameManager.worms = 0
+		switch_bttn.visible = false
 		GameManager.game_over = true
 		save_highest_points()
 		animation_player.play("spiked")

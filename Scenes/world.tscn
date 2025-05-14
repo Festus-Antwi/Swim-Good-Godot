@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://d1q1tlawydtk3"]
+[gd_scene load_steps=36 format=3 uid="uid://d1q1tlawydtk3"]
 
 [ext_resource type="Script" uid="uid://b2fhj5si5fd6d" path="res://Scripts/world.gd" id="1_o06y3"]
 [ext_resource type="Texture2D" uid="uid://bhpfumt161ept" path="res://Assets/Graphics/circle.png" id="2_5a7ea"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://w5kq1xl8ei2x" path="res://Scenes/underwatter_stuff.tscn" id="14_pt3ps"]
 [ext_resource type="PackedScene" uid="uid://cjtbx4htndfy8" path="res://Scenes/water_stuff.tscn" id="15_1cojt"]
 [ext_resource type="Script" uid="uid://bfygb02adtnk1" path="res://Scripts/worm_spawner.gd" id="16_hgpy0"]
+[ext_resource type="Script" uid="uid://dqfhxxo73bxsm" path="res://Scripts/fish.gd" id="20_no8kt"]
 [ext_resource type="Texture2D" uid="uid://bxwf3uu4ri1hr" path="res://Assets/Graphics/white.png" id="21_no8kt"]
 [ext_resource type="AudioStream" uid="uid://cksqxx02thrck" path="res://Assets/Sounds/spike.ogg" id="22_no8kt"]
 [ext_resource type="Texture2D" uid="uid://cjhfx8vyaffi1" path="res://Assets/Graphics/fish.png" id="22_pyn1s"]
@@ -124,10 +125,6 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_pyn1s"]
-resource_name = "turn"
-length = 0.3
-
 [sub_resource type="Animation" id="Animation_no8kt"]
 resource_name = "spiked"
 length = 2.0
@@ -155,6 +152,10 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+
+[sub_resource type="Animation" id="Animation_pyn1s"]
+resource_name = "turn"
+length = 0.3
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pyn1s"]
 _data = {
@@ -331,8 +332,9 @@ position = Vector2(540, 703)
 [node name="PlayerRotator" type="Node2D" parent="."]
 position = Vector2(540, 703)
 
-[node name="Fish" type="Area2D" parent="PlayerRotator" groups=["Player"]]
+[node name="Fish" type="Area2D" parent="PlayerRotator"]
 position = Vector2(0, -440)
+script = ExtResource("20_no8kt")
 
 [node name="blood" type="CPUParticles2D" parent="PlayerRotator/Fish"]
 emitting = false
